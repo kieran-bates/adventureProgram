@@ -53,7 +53,10 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="156" max="32767" attributes="0"/>
-                  <Component id="goButton" min="-2" pref="85" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="cButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="goButton" min="-2" pref="85" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -69,6 +72,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="bButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="aButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="25" max="32767" attributes="0"/>
                   <Component id="goButton" min="-2" max="-2" attributes="0"/>
@@ -78,6 +82,11 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
+        <Component class="javax.swing.JRadioButton" name="cButton">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cButtonActionPerformed"/>
+          </Events>
+        </Component>
         <Component class="javax.swing.JLabel" name="resultField">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>

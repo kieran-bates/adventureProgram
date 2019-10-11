@@ -26,6 +26,9 @@ public class adventureProgramGUI extends javax.swing.JFrame {
         
         bg1.add(bButton);
         bg1.add(aButton);
+        bg1.add(cButton);
+        
+        cButton.setVisible(false);
         
     }
     /**
@@ -41,6 +44,7 @@ public class adventureProgramGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        cButton = new javax.swing.JRadioButton();
         resultField = new javax.swing.JLabel();
         aButton = new javax.swing.JRadioButton();
         bButton = new javax.swing.JRadioButton();
@@ -49,6 +53,12 @@ public class adventureProgramGUI extends javax.swing.JFrame {
         outputField = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        cButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cButtonActionPerformed(evt);
+            }
+        });
 
         resultField.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
@@ -93,7 +103,9 @@ public class adventureProgramGUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(156, Short.MAX_VALUE)
-                .addComponent(goButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cButton)
+                    .addComponent(goButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(153, 153, 153))
         );
         jPanel1Layout.setVerticalGroup(
@@ -106,7 +118,8 @@ public class adventureProgramGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bButton)
-                    .addComponent(aButton))
+                    .addComponent(aButton)
+                    .addComponent(cButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(goButton)
                 .addContainerGap())
@@ -138,63 +151,115 @@ public class adventureProgramGUI extends javax.swing.JFrame {
         
         counter = counter + 1;
         goButton.setText("GO");
+        cButton.doClick();
         
         if (counter == 1)
         {
-            if (aButton.isSelected())
+            outputField.setText("You walk into the building. \nYou see two doors. \nOne is broken and easy to kick down. \nThe other is made of iron. \n\nA = Use explosive charge to destroy iron door\nB = Kick down broken door");
+            if (bButton.isSelected())
             {
-                outputField.setText("You walk into the building. \nYou see two doors. \nOne is broken and easy to kick down. \nThe other is made of iron. \n\nA = Use explosive charge to destroy iron door\nB = Kick down broken door");
+                cButton.doClick();
             }
             
-            else
+            if (aButton.isSelected())
             {
                 outputField.setText("The bad guy runs out of the building and kills you.");
                 goButton.setText("Try Again");
-                aButton.doClick();
+                cButton.doClick();
                 counter = 0;
             }
         }
         
         if (counter == 2)
         {
+            outputField.setText("You kick down the broken door to find an elavator. \nThe door is open and the buttons appear to be \nworking. \nThere is, however, a hole in the roof. \n\nA = Crawl through the hole and climb up the cable \nB = Use the elavator as normal");
             if (bButton.isSelected())
             {
-                outputField.setText("You kick down the broken door to find an elavator. \nThe door is open and the buttons appear to be \nworking. \nThere is, however, a hole in the roof. \n\nA = Crawl through the hole and climb up the cable \nB = Use the elavator as normal");
+                cButton.doClick();
             }
             
-            else 
+            if (aButton.isSelected()) 
             {
                 outputField.setText("You use your explosive device to destroy the door. \nThere are large quantities of TNT behind the door. \nThe explosion is too large for you to survive. ");
                 goButton.setText("Try Again");
+                cButton.doClick();
                 counter = 0;
             }
         }
         
         if (counter == 3)
         {
+            outputField.setText("You slowly shimmy up the elavator cable \nto the next floor. \nYou can hear sounds down the hallway. \nYou check your gun and realize\nyou are low on ammo. \nYou also see some extra ammo lying on the ground. \nA = Load the ammo \nB = Leave with what you have");
             if (aButton.isSelected())
             {
-                
+                cButton.doClick();
             }
             
-            else
+            if (bButton.isSelected())
             {
                 outputField.setText("You press the up button in the elavator. \nIt is rigged by the bad guy. \nThe cable breaks and you fall to your death. ");
                 goButton.setText("Try Again");
+                cButton.doClick();
                 counter = 0;
             }
         }
         
         if (counter == 4)
         {
-            
+            outputField.setText("You choose not to load the ammo. \nYou continue down the hall ahead of you. \nA figure suddenly appears from around a corner\nand begins shooting at you. \nThe room is also full of support pillars\nA = hide behind the pillars \nB = Shoot back");
+            if(bButton.isSelected())
+            {
+                cButton.doClick();
+            }
+            if(aButton.isSelected())
+            {
+            outputField.setText("You load the ammo into your gun. \nDown the hall, a figure suddenly starts shooting at you. \nYou shoot back, but the ammo you\nloaded is rigged. \nIt blows up in your face.");
+            goButton.setText("Try Again");
+            cButton.doClick();
+            counter = 0;
+            }
         }
         
         if (counter == 5)
         {
+            outputField.setText("You choose to hide behind the pillar. \nThe shooter advances on your position. \nYou quickly jump at the shooter and tackle\nhim to the ground. \nITS THE VILLAIN! \nA = Shoot him \nB = Stab him");
+            if(aButton.isSelected())
+            {
+                cButton.doClick();
+            }
             
+            if(bButton.isSelected())
+            {
+                outputField.setText("You shoot back, but the shooter\nis wearing a bulletproof vest. \nYou are eventually shot to death.");
+                goButton.setText("Try Again");
+                cButton.doClick();
+                counter = 0;
+            }
+        }
+        
+        if (counter == 6)
+        {
+            if(aButton.isSelected())
+            {
+                outputField.setText("You choose to stab the villain. \nIt works. \nYou win!");
+                goButton.setText("Try Again");
+                cButton.doClick();
+                counter = 0;
+            }
+            
+            if(bButton.isSelected())
+            {
+                outputField.setText("You try to shoot him through the head, \nbut your gun is empty! \nThe villain pulls out his knife\nand stabs you to death.");
+                goButton.setText("Try Again");
+                cButton.doClick();
+                counter = 0;
+            }
         }
     }//GEN-LAST:event_goButtonActionPerformed
+
+    private void cButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,6 +299,7 @@ public class adventureProgramGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton aButton;
     private javax.swing.JRadioButton bButton;
+    private javax.swing.JRadioButton cButton;
     private javax.swing.JButton goButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
