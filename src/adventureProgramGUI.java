@@ -83,6 +83,7 @@ public class adventureProgramGUI extends javax.swing.JFrame {
             }
         });
 
+        outputField.setEditable(false);
         outputField.setColumns(20);
         outputField.setRows(5);
         jScrollPane1.setViewportView(outputField);
@@ -239,7 +240,7 @@ public class adventureProgramGUI extends javax.swing.JFrame {
         {
             if(aButton.isSelected())
             {
-                outputField.setText("You choose to stab the villain. \nIt works. \nYou win!");
+                outputField.setText("Although it is not your style, \nyou choose to stab the villain. \nIt works. \nYou win!");
                 goButton.setText("Try Again");
                 cButton.doClick();
                 counter = -1;
